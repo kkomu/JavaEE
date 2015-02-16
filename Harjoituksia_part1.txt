@@ -1,0 +1,18 @@
+1. Mikä merkitys web.xml tiedostolla on projektissa? Mikä merkitys <session-timeout>
+elementillä on web.xml tiedostossa?
+- web.xml on JavaEE-projektin "main configuration file" (myös: web deployment descriptor file). Sisältää tarvittavat servlet-mäppäykset.
+- session-timeout elementtiin määritellään idle-aika jonka jälkeen clientin session status laitetaan: 'invalid'.
+
+2. Mitä tiedostoja voit laittaa projektissasi Web Pages kansioon? Entä Source Packages kansio?
+- Web pages: Kaikki .xhtml tiedostot
+- Source packages: Kaikki .java tiedostot
+
+3. Mitä eroa on JSF tag elementeillä <h:link> ja <h:commandLink>? Missä tilanteessa
+käyttäisit <h:link> elementtiä? Entä <h:commandLink elementtiä?
+-h:link renderöi HTML "a" elementin. Lähettää suoraan GET-pyynnön
+-h:commandLink renderöi HTML "a" elementin joka toimii kuten submit-nappi.
+
+4. Mitä eroa on jos käytät sovelluksessasi .css tiedoston lataamiseen <h: outputStyleSheet>
+elementtiä tai nromaalia html elementtiä <link>?
+
+-h:outputStyleSheet renderöi <link> elementin. Ei (kai) mitään eroa?
