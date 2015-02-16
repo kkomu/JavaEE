@@ -9,10 +9,42 @@ elementillä on web.xml tiedostossa?
 
 3. Mitä eroa on JSF tag elementeillä <h:link> ja <h:commandLink>? Missä tilanteessa
 käyttäisit <h:link> elementtiä? Entä <h:commandLink elementtiä?
--h:link renderöi HTML "a" elementin. Lähettää suoraan GET-pyynnön
--h:commandLink renderöi HTML "a" elementin joka toimii kuten submit-nappi.
+- h:link renderöi HTML "a" elementin. Lähettää suoraan GET-pyynnön
+- h:commandLink renderöi HTML "a" elementin joka toimii kuten submit-nappi.
 
 4. Mitä eroa on jos käytät sovelluksessasi .css tiedoston lataamiseen <h: outputStyleSheet>
 elementtiä tai nromaalia html elementtiä <link>?
+- h:outputStyleSheet renderöi <link> elementin. Ei (kai) mitään eroa?
 
--h:outputStyleSheet renderöi <link> elementin. Ei (kai) mitään eroa?
+5. Mitä tarkoitetaan implisiittisellä navigoinnilla?
+- Navigointi tapahtuu command buttonin tai linkin action-atribuutilla.
+- JSF etsii automaattisesti action-atribuuttia vastaavan .xhtml-tiedoston
+
+6. Mikä tiedosto projektiin pitää lisätä, jotta voit määritellä ns. Navigointi säännöt. Mitä muita
+asioita voit konfiguroida tällä tiedostolla?
+- faces-config.xml
+
+7. -
+
+8. Mitä attribuutteja voit antaa @ManagedBean annotaatiossa? Mitä tekee eager attribuutti jos
+asetat sen arvoon tosi? Entä mitä tekee name attrubuutti.
+- Atribuutteja: String name & boolean eager
+- Nimi-attribuutilla viitataan managedbean-luokkaan xhtml:ssä
+- Eager-attribuuttilla määritetään käynnisteteäänkö bean ennen kuin sitä tarvitaan.
+
+9. Mistä tiedoista Managed Bean koostuu, eli mitä yleensä määrittelet Managed Bean luokaan.
+- private-muuttujia sekä setterit ja getterit niille.
+
+10. Mitä universaalia kieltä voit käyttää kun haluat sitoa Managed Bean komponentissa olevien
+muuttujien arvoja JSF sivulle? Mitä eroa on syntaksilla #{} ja ${}?
+- Expression language
+- #{} = Deferred Evaluation
+- ?{} = Immediate Evaluation
+
+11. Mikä eroa on JSF output ja input elementeillä. Miten nämä elementit liittyvät Managed
+Bean komponeteissa oleviin funktioihin?
+- input-elementti voi vain asettaa dataa (käyttää setter-funktioita)
+- output-elementti voi vain lukea dataa (käyttää getter-funktioita).
+
+12. Mikä elinkaari on Managed Bean komponentissa jos käytätä annotaatiota @RequestScoped?
+- Niin kauan kuin http-response elää
