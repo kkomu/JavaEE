@@ -10,21 +10,21 @@
         <h:form>
             <h:outputLabel id="nameLabel" value="Name"></h:outputLabel>
             <br/>
-            <h:inputText id="nameText"></h:inputText>
+            <h:inputText id="nameText" value="#{userInfoBean.name}"></h:inputText>
             <br/>
             <h:outputLabel id="addressLabel" value="Address"></h:outputLabel>
             <br/>
-            <h:inputText id="addressText"></h:inputText>
+            <h:inputText id="addressText" value="#{userInfoBean.address}"></h:inputText>
             <br/>
             <h:outputLabel id="emailLabel" value="Email"></h:outputLabel>
             <br/>
-            <h:inputText id="emailText"></h:inputText>
+            <h:inputText id="emailText" value="#{userInfoBean.email}"></h:inputText>
             <br/>
             <h:outputLabel id="phoneLabel" value="Phone"></h:outputLabel>
             <br/>
-            <h:inputText id="phoneText"></h:inputText>
+            <h:inputText id="phoneText" value="#{userInfoBean.phone}"></h:inputText>
             <br/>
-            <h:commandButton value="Send" action="ok"></h:commandButton>
+            <h:commandButton value="Send" action="submit"></h:commandButton>
         </h:form>
     </h:body>
 </html>
