@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -10,19 +11,34 @@
         <h:form>
             <h:outputLabel id="nameLabel" value="Name"></h:outputLabel>
             <br/>
-            <h:inputText id="nameText" value="#{userInfoBean.name}"></h:inputText>
+            <h:inputText required="true" id="nameText" value="#{userInfoBean.name}"
+             validatorMessage="Input too long.">
+                <f:validateLength minimum="1" maximum="25" />
+            </h:inputText>
+            <h:message for="nameText" style="color: red"></h:message>
             <br/>
             <h:outputLabel id="addressLabel" value="Address"></h:outputLabel>
             <br/>
-            <h:inputText id="addressText" value="#{userInfoBean.address}"></h:inputText>
+            <h:inputText required="true" id="addressText" value="#{userInfoBean.address}"
+             validatorMessage="Input too long.">
+                <f:validateLength minimum="1" maximum="25" />
+            </h:inputText>
+            <h:message for="addressText" style="color: red"></h:message>
             <br/>
             <h:outputLabel id="emailLabel" value="Email"></h:outputLabel>
             <br/>
-            <h:inputText id="emailText" value="#{userInfoBean.email}"></h:inputText>
+            <h:inputText required="true" id="emailText" value="#{userInfoBean.email}">
+                <f:validator validatorId="com.opiframe.managed.MyValidator"></f:validator>
+            </h:inputText>
+            <h:message for="emailText" style="color: red"></h:message>
             <br/>
             <h:outputLabel id="phoneLabel" value="Phone"></h:outputLabel>
             <br/>
-            <h:inputText id="phoneText" value="#{userInfoBean.phone}"></h:inputText>
+            <h:inputText required="true" id="phoneText" value="#{userInfoBean.phone}"
+             validatorMessage="Input too long.">
+                <f:validateLength minimum="1" maximum="25" />
+            </h:inputText>
+            <h:message for="phoneText" style="color: red"></h:message>
             <br/>
             <h:commandButton value="Send" action="submit"></h:commandButton>
         </h:form>
