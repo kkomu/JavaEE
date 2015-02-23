@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:lg="http://xmlns.jcp.org/jsf/composite/ezcomp"
+      xmlns:my="http://opiframe/jsf-custom-components">
+    <h:head>
+        <title>#{msg['title']}</title>
+        <h:outputStylesheet library="css" name="mystyle.css" />
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1>#{msg['heading1']}</h1>
+            <h:form>
+                <h:outputLabel for="name" value="#{msg['label1']}" />
+                <br/>
+                <h:inputSecret id="name" value="#{nameBean.name}" ></h:inputSecret>
+                <br/>
+                <h:commandButton class="cmd" value="#{msg['button1']}">
+                    <f:ajax execute="name" render="showName"></f:ajax>
+                </h:commandButton>
+                <br/>
+                <h:outputLabel id="showName" value="#{nameBean.name}"></h:outputLabel>
+                <br/>
+                <input type="date" id="mydate" value="#{nameBean.date}"></input>
+                <br/>
+                <h:link outcome="next" value="#{msg['link1']}"></h:link>
+            </h:form>
+            <lg:logo companyName="Monkey Business"></lg:logo>
+            <br/>
+            <my:mycustom headerText="Customoitu Componentti"></my:mycustom>
+        </div>
+    </h:body>
+</html>

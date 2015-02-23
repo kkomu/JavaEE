@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:lg="http://xmlns.jcp.org/jsf/composite/ezcomp">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="mystyle.css" />
+    </h:head>
+    <h:body>
+        <h:dataTable value="#{dataBean.persons}" var="person" border="1">
+            <h:column>
+                <f:facet name="header">Nimi</f:facet>
+                #{person.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Osoite</f:facet>
+                #{person.address}
+            </h:column>
+        </h:dataTable>
+        <lg:logo companyName="Monkey Business"></lg:logo>
+    </h:body>
+</html>
+

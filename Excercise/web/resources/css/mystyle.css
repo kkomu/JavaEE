@@ -1,0 +1,41 @@
+.container{
+    width:480px;
+    margin: 0 auto;
+}
+
+form input{
+    margin:8px;
+}
+
+form label{
+    margin:8px;
+}
+
+.cmd{
+    border-radius: 8px;
+    background-color: lightgray;
+}
+
+.order-table{   
+	border-collapse:collapse;
+}
+ 
+.order-table-header{
+	text-align:center;
+	background:none repeat scroll 0 0 #E5E5E5;
+	border-bottom:1px solid #BBBBBB;
+	padding:16px;
+}
+ 
+.order-table-odd-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #FFFFFFF;
+	border-top:1px solid #BBBBBB;
+}
+ 
+.order-table-even-row{
+	text-align:center;
+	background:none repeat scroll 0 0 #F9F9F9;
+	border-top:1px solid #BBBBBB;
+}
+
