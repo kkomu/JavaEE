@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="mystyle.css"></h:outputStylesheet>
+    </h:head>
+    <h:body>
+        <h3>Weather App</h3>
+        <div id="addUser">    
+            <h:form>
+
+                <p:outputLabel value="Add new user"></p:outputLabel>
+                <br/>
+
+                <p:inputText value="#{userBean.name}"></p:inputText>
+                <br/>
+                <p:commandButton value="Save" actionListener="#{userBean.saveUser}"></p:commandButton>
+
+            </h:form>
+        </div>
+        <div id="userList">
+            <h:form>
+                <p:dataList value="#{userBean.allUsers}" var="user">
+                    <f:facet name="header">
+                        Select user
+                    </f:facet>
+                    <p:link outcome="weather" value="#{user.name}">
+                        <f:param name="id" value="#{user.userId}"></f:param>
+                        <f:param name="name" value="#{user.name}"></f:param>
+                    </p:link>
+                </p:dataList>
+            </h:form>
+            
+        </div>
+    </h:body>
+</html>

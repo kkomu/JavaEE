@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25.2.2015, 10:17:26
+    Author     : Ohjelmistokehitys
+*/
+
+input {
+    margin: 10px!important;
+    
+}
+
+button {
+    margin-left: 10px!important;
+}
+
+label {
+    margin-left: 10px!important;
+}
+
+#addUser {
+    background-color: lightblue;
+    margin: 10px!important;
+    float: left;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#userList {
+    float: left;
+    max-width: 350px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.ui-datalist-content {
+   padding: 10px; 
+    
+}
