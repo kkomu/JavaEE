@@ -21,8 +21,8 @@ import javax.transaction.UserTransaction;
 /**
  *
  * @author Ohjelmistokehitys
- */@
-ManagedBean
+ */
+@ManagedBean
 @RequestScoped
 public class UserBean implements Serializable {
     

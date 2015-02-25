@@ -1,12 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Weather</title>
+        <title>Weather for #{weatherBean.name}</title>
+        <h:outputStylesheet library="css" name="mystyle.css"></h:outputStylesheet>
     </h:head>
     <h:body>
-        Weather
+        <h:outputLabel value="Welcome #{weatherBean.name}"></h:outputLabel>
+        <h:form>
+            <p:calendar id="button" value="#{weatherBean.date}" showOn="button" />
+            <br/>
+            <p:outputLabel value="Rain Amount"></p:outputLabel>
+            <br/>
+            <p:spinner stepFactor="1.0" value="#{weatherBean.rainAmount}"></p:spinner>
+            <br/>
+            <p:outputLabel value="Rain Type"></p:outputLabel>
+            <br/>
+            <p:inputText value="#{weatherBean.rainType}"></p:inputText>
+            <br/>
+            <p:outputLabel value="Temperature"></p:outputLabel>
+            <br/>
+            <p:spinner stepFactor="0.5" value="#{weatherBean.temperature}"></p:spinner>
+            <br/>
+             <p:outputLabel value="Wind"></p:outputLabel>
+            <br/>
+            <p:spinner stepFactor="0.5" value="#{weatherBean.wind}"></p:spinner>
+            <br/>
+            <p:commandButton value="Save" actionListener="#{weatherBean.saveWeather()}"></p:commandButton>
+        </h:form>
     </h:body>
 </html>
 
