@@ -12,19 +12,19 @@
         <h3>Weather App</h3>
         <div id="addUser">    
             <h:form>
-
                 <p:outputLabel value="Add new user"></p:outputLabel>
                 <br/>
-
-                <p:inputText value="#{userBean.name}"></p:inputText>
+                <p:inputText id="txtName" value="#{userBean.name}"></p:inputText>
                 <br/>
-                <p:commandButton value="Save" actionListener="#{userBean.saveUser}"></p:commandButton>
+                <p:commandButton value="Save" actionListener="#{userBean.saveUser}">
+                    <f:ajax render="txtName" resetValues="true"></f:ajax>
+                </p:commandButton>
 
             </h:form>
         </div>
         <div id="userList">
             <h:form>
-                <p:dataList value="#{userBean.allUsers}" var="user">
+                <p:dataList id="lstNames" value="#{userBean.allUsers}" var="user" type="definition">
                     <f:facet name="header">
                         Select user
                     </f:facet>
@@ -33,8 +33,11 @@
                         <f:param name="name" value="#{user.name}"></f:param>
                     </p:link>
                 </p:dataList>
+                <br/>
+                <p:commandButton value="Refresh">
+                    <f:ajax render="lstNames"></f:ajax>
+                </p:commandButton>
             </h:form>
-            
         </div>
     </h:body>
 </html>

@@ -1,0 +1,22 @@
+- Puuttuvien JDBC-resurssien ja connection poolien lisääminen Glassfish-serverille:
+1. Projektin alta löytyy:
+	setup/glassfish-resources.xml
+
+2. Mene C:\Program Files\glassfish-4.1\bin ja aja:
+asadmin add-resources <projekti>/setup/glassfish-resources.xml
+
+- SQL-skriptin luominen
+1. Asenna MySQL Workbench installerin kautta
+
+2. Avaa Workbench ja klikkaa luomaasi connectionia (luo connection jos sitä ei ole valmiina)
+
+3. Valitse Data Export
+
+4. Valitse haluamasi taulu 'Tables to Export' näkymästä
+   Valitse 'Export to Self-Contained File' ja haluamasi .sql tiedosto
+   Valitse 'Create Dump in a Single Transaction
+
+5. Start Export
+
+
+

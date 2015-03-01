@@ -133,5 +133,7 @@ public class WeatherBean {
             Logger.getLogger(WeatherBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        //this.setDate(null);
+        //this.setRainAmount(null);
     }
 }

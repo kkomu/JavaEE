@@ -9,28 +9,36 @@
         <h:outputStylesheet library="css" name="mystyle.css"></h:outputStylesheet>
     </h:head>
     <h:body>
-        <h:outputLabel value="Welcome #{weatherBean.name}"></h:outputLabel>
-        <h:form>
-            <p:calendar id="button" value="#{weatherBean.date}" showOn="button" />
-            <br/>
-            <p:outputLabel value="Rain Amount"></p:outputLabel>
-            <br/>
-            <p:spinner stepFactor="1.0" value="#{weatherBean.rainAmount}"></p:spinner>
-            <br/>
-            <p:outputLabel value="Rain Type"></p:outputLabel>
-            <br/>
-            <p:inputText value="#{weatherBean.rainType}"></p:inputText>
-            <br/>
-            <p:outputLabel value="Temperature"></p:outputLabel>
-            <br/>
-            <p:spinner stepFactor="0.5" value="#{weatherBean.temperature}"></p:spinner>
-            <br/>
-             <p:outputLabel value="Wind"></p:outputLabel>
-            <br/>
-            <p:spinner stepFactor="0.5" value="#{weatherBean.wind}"></p:spinner>
-            <br/>
-            <p:commandButton value="Save" actionListener="#{weatherBean.saveWeather()}"></p:commandButton>
-        </h:form>
+        <div id="weatherForm">
+            <h:outputLabel value="Welcome #{weatherBean.name}"></h:outputLabel>
+            <h:form>
+                <p:calendar id="btnCal" value="#{weatherBean.date}" showOn="button" />
+                <br/>
+                <p:outputLabel value="Rain Amount"></p:outputLabel>
+                <br/>
+                <p:spinner id="spnAmount" stepFactor="1.0" value="#{weatherBean.rainAmount}"></p:spinner>
+                <br/>
+                <p:outputLabel value="Rain Type"></p:outputLabel>
+                <br/>
+                <p:inputText id="inpWeather" value="#{weatherBean.rainType}"></p:inputText>
+                <br/>
+                <p:outputLabel value="Temperature"></p:outputLabel>
+                <br/>
+                <p:spinner id="spnTemp" stepFactor="0.5" value="#{weatherBean.temperature}"></p:spinner>
+                <br/>
+                 <p:outputLabel value="Wind"></p:outputLabel>
+                <br/>
+                <p:spinner id="spnWind" stepFactor="0.5" value="#{weatherBean.wind}"></p:spinner>
+                <br/>
+                <p:commandButton value="Save" actionListener="#{weatherBean.saveWeather()}">
+                    <f:ajax render="btnCal spnAmount inpWeather spnTemp spnWind" resetValues="true"/>
+                </p:commandButton>
+            </h:form>
+        </div>
+        <div id="weatherGraph">
+            <p:chart type="line" model="#{chartBean.dateModel}" style="height:400px;"/>
+            
+        </div>
     </h:body>
 </html>
 
