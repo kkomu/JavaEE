@@ -14,7 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +25,7 @@ import javax.transaction.UserTransaction;
  * @author Opiframe
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class WeatherBean {
     
     @PersistenceContext
@@ -110,10 +110,7 @@ public class WeatherBean {
     public void setTemperature(Long temperature) {
         this.temperature = temperature;
     }
-    
-    
-
-    
+ 
     public void saveWeather(){
         System.out.println("Save the weather");
         System.out.println(this.getUserId());

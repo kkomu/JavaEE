@@ -14,8 +14,10 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.UserTransaction;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.LineChartModel;
@@ -33,6 +35,33 @@ public class ChartBean implements Serializable {
     
     private LineChartModel dateModel;
    
+    private HttpServletRequest request;
+    
+    private String userId;
+    private String name;
+    
+    public ChartBean() {
+        request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        this.setUserId(request.getParameter("id"));
+        this.setName(request.getParameter("name"));
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     @PostConstruct
     public void init() {
         createDateModel();
@@ -43,31 +72,35 @@ public class ChartBean implements Serializable {
     }
     
     private void createDateModel() {
+       
         DailyWeatherJpaController jpa = new DailyWeatherJpaController(utx,em.getEntityManagerFactory());
         List<DailyWeather> weatherData = jpa.findDailyWeatherEntities();
 
-        SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+        if(!weatherData.isEmpty()) {
         
-        dateModel = new LineChartModel();
-        LineChartSeries series1 = new LineChartSeries();
-        series1.setLabel("Series 1");
-        
-        
-        
-        for(DailyWeather w: weatherData) {
-            series1.set(simpleDate.format(w.getDate()), w.getRainAmount());
+            SimpleDateFormat simpleDate = new SimpleDateFormat("yyyy-MM-dd");
+
+            dateModel = new LineChartModel();
+            LineChartSeries series1 = new LineChartSeries();
+            series1.setLabel("Series 1");
+
+            for(DailyWeather w: weatherData) {
+                if(w.getUserId().getUserId() == Integer.parseInt(this.getUserId())) {
+                    series1.set(simpleDate.format(w.getDate()), w.getRainAmount());
+                }
+            }
+
+            dateModel.addSeries(series1);
+
+            dateModel.setTitle("Zoom for Details");
+            dateModel.setZoom(true);
+            dateModel.getAxis(AxisType.Y).setLabel("Rain amount");
+            DateAxis axis = new DateAxis("Dates");
+            axis.setTickAngle(-50);
+            axis.setMax("2015-03-01");
+            axis.setTickFormat("%b %#d, %y");
+
+            dateModel.getAxes().put(AxisType.X, axis);
         }
-        
-        dateModel.addSeries(series1);
-           
-        dateModel.setTitle("Zoom for Details");
-        dateModel.setZoom(true);
-        dateModel.getAxis(AxisType.Y).setLabel("Rain amount");
-        DateAxis axis = new DateAxis("Dates");
-        axis.setTickAngle(-50);
-        axis.setMax("2015-03-01");
-        axis.setTickFormat("%b %#d, %y");
-         
-        dateModel.getAxes().put(AxisType.X, axis);
     }
 }
