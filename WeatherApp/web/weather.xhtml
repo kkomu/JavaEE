@@ -7,8 +7,14 @@
     <h:head>
         <title>Weather for #{weatherBean.name}</title>
         <h:outputStylesheet library="css" name="mystyle.css"></h:outputStylesheet>
+        <f:metadata>
+            <f:viewParam name="id" value="#{weatherBean.userId}"/>
+            <f:viewParam name="name" value="#{weatherBean.name}"/>
+        </f:metadata>
     </h:head>
     <h:body>
+        <p:link outcome="index" value="Back"></p:link> 
+        <br/>
         <div id="weatherForm">
             <h:outputLabel value="Welcome #{weatherBean.name}"></h:outputLabel>
             <h:form>
@@ -36,7 +42,11 @@
             </h:form>
         </div>
         <div id="weatherGraph">
-            <p:chart type="line" model="#{chartBean.dateModel}" style="height:400px;"/>
+            <p:chart type="line" model="#{chartBean.dateModel}" style="height:400px;" id="rainChart"/>
+            <br/>
+            <p:commandButton value="Refresh">
+                <f:ajax render="rainChart"></f:ajax>
+            </p:commandButton>
             
         </div>
     </h:body>

@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
@@ -23,7 +23,7 @@ import org.primefaces.model.chart.DateAxis;
 import org.primefaces.model.chart.LineChartSeries;
  
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class ChartBean implements Serializable {
     
     @PersistenceContext
@@ -32,7 +32,7 @@ public class ChartBean implements Serializable {
     UserTransaction utx;
     
     private LineChartModel dateModel;
- 
+   
     @PostConstruct
     public void init() {
         createDateModel();
@@ -41,7 +41,7 @@ public class ChartBean implements Serializable {
     public LineChartModel getDateModel() {
         return dateModel;
     }
-     
+    
     private void createDateModel() {
         DailyWeatherJpaController jpa = new DailyWeatherJpaController(utx,em.getEntityManagerFactory());
         List<DailyWeather> weatherData = jpa.findDailyWeatherEntities();
@@ -51,7 +51,9 @@ public class ChartBean implements Serializable {
         dateModel = new LineChartModel();
         LineChartSeries series1 = new LineChartSeries();
         series1.setLabel("Series 1");
-  
+        
+        
+        
         for(DailyWeather w: weatherData) {
             series1.set(simpleDate.format(w.getDate()), w.getRainAmount());
         }
@@ -60,7 +62,7 @@ public class ChartBean implements Serializable {
            
         dateModel.setTitle("Zoom for Details");
         dateModel.setZoom(true);
-        dateModel.getAxis(AxisType.Y).setLabel("Values");
+        dateModel.getAxis(AxisType.Y).setLabel("Rain amount");
         DateAxis axis = new DateAxis("Dates");
         axis.setTickAngle(-50);
         axis.setMax("2015-03-01");

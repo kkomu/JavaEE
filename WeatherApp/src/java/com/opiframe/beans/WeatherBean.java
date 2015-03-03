@@ -14,8 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +25,7 @@ import javax.transaction.UserTransaction;
  * @author Opiframe
  */
 @ManagedBean
-@SessionScoped
+@RequestScoped
 public class WeatherBean {
     
     @PersistenceContext
@@ -45,9 +44,9 @@ public class WeatherBean {
     
     public WeatherBean() {
         
-        request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        userId = request.getParameter("id");
-        name = request.getParameter("name");
+        //request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        //userId = request.getParameter("id");
+        //name = request.getParameter("name");
         
     }
 
